@@ -11,7 +11,9 @@ export default defineConfig({
 		coverage: {
 			reporter: ["text", "html", "json-summary"],
 			reportsDirectory: "./coverage",
+			include: ['src/**/*.{test}.{ts,tsx}'],
 			exclude: [
+				"e2e",
 				"**/tests/**",
 				"**/*.test.{ts,tsx}",
 				"**/__mocks__/**",

@@ -14,7 +14,9 @@
 		"e2e:ui": "playwright show-report",
 		"preinstall": "node scripts/preinstall.js",
 		"prepare": "husky install",
-		"test": "vitest --config tests/vitest.config.ts",
+		"test": "pnpm test:unit && pnpm test:e2e",
+		"test:unit": "vitest --config tests/vitest.config.ts",
+		"test:e2e": "playwright test",
 		"test:coverage": "vitest --config tests/vitest.config.ts --coverage",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"

@@ -17,7 +17,7 @@
 		"build-storybook": "storybook build"
 	},
 	"lint-staged": {
-		"*.{ts,tsx,js}": ["next lint"]
+		"*.{ts,tsx,js}": ["eslint --fix"]
 	},
 	"dependencies": {
 		"class-variance-authority": "^0.7.1",

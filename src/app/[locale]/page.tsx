@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/Button/Button";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -31,6 +32,17 @@ export default function Home() {
 						Save and see your changes instantly.
 					</li>
 				</ol>
+
+				<div className="flex gap-4 items-center flex-col sm:flex-row">
+					<Button variant="outline">Click me</Button>
+					<Button variant="ghost">Click me</Button>
+					<Button variant="link">Click me</Button>
+				</div>
+				<div className="flex gap-4 items-center flex-col sm:flex-row w-100">
+					<Button variant="outline" fullWidth>
+						Click me
+					</Button>
+				</div>
 
 				<div className="flex gap-4 items-center flex-col sm:flex-row">
 					<a

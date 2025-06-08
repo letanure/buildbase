@@ -1,0 +1,104 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Commit message style + Buildbase boilerplate
+alwaysApply: true
+---
+
+# buildbase boilerplate rules
+
+## COMMITS
+- Use semantic commit messages
+- Allowed types: [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test]
+- Keep commit messages short (preferably under 50 characters)
+- Enforced via Husky and Commitlint
+
+## STACK
+- pnpm only
+- Next.js 15 with App Router
+- TypeScript strict mode
+- TailwindCSS with CSS tokens
+- Supabase (Auth, DB, RLS, Storage)
+- next-intl for i18n (en, pt)
+- Custom UI components (Tailwind + Lucide)
+- Feature flags via Supabase + `lib/flags.ts`
+- Validation with Zod
+- Middleware: route protection, API rate limiting
+- Analytics: PostHog
+- Documentation: Markdown + TSDoc + Typedoc (optional AI docgen)
+- Code generators: Hygen
+- Testing: Vitest, Playwright, MSW, jest-axe
+- CI/CD: GitHub Actions
+- Commit standard: Semantic commits (Husky + Commitlint)
+
+## FOLDER STRUCTURE
+- src/app → routes and layouts
+- src/components → shared components
+- src/components/ui → UI primitives (e.g. Button, Input)
+- src/constants → shared constants
+- src/lib → env, flags, auth, db, utils
+- src/styles → tailwind.css, theme.css
+- src/types → shared type definitions
+- src/tests → global test utils (optional)
+- public/locales → JSON i18n files
+- _templates → Hygen generators
+- docs → internal documentation
+
+## NAMING CONVENTIONS
+- Routes: `page.tsx`, `layout.tsx`, `error.tsx`, `not-found.tsx`
+- Components: `PascalCase.tsx` (e.g. `UserCard.tsx`)
+- Hooks: `useCamelCase.ts`
+- Helpers/lib: `camelCase.ts` (e.g. `fetchUser.ts`)
+- Types: `PascalCase` (e.g. `User`, `AppConfig`)  
+  - File: `snake_case.ts` if grouped
+- Env config: `lib/env.ts` (with Zod)
+- Feature flags: `lib/flags.ts`
+- Tests: `Component.test.tsx` (colocated or `src/tests`)
+- CSS tokens: in `theme.css`, using `:root` and `[data-theme="dark"]`
+
+## RULES
+- Use pnpm only (no yarn, no npm)
+- Use Biome for lint, format, and typecheck (no eslint or prettier)
+- Commit messages must follow Conventional Commits
+- All components must support dark/light mode via CSS tokens
+- Add tests (unit + E2E) for all shared components and routes
+- Use Hygen for generating pages, models, components, etc.
+- Use Typedoc and Markdown docs for shared components and logic
+- GitHub Actions must run lint, typecheck, test, and e2e for each PR
+- Public API client logic must be in `lib/`, fully typed
+- Always update `README.md` when structure, setup, or logic changes
+- All app logic must use `trackEvent()` for analytics
+- All error handling must use `reportError()` instead of `console.error`
+
+## TESTING
+- Unit tests colocated with components
+- E2E tests in `e2e/` (Playwright) with real Supabase login
+- Accessibility tests with `jest-axe`
+- Mocking via MSW for client-side logic
+
+## ENVIRONMENT
+- `.node-version` and `.nvmrc` must match (18.19.0)
+- `.pnpmrc` must include:
+  shamefully-hoist=true  
+  auto-install-peers=true
+
+## OPTIONAL INTEGRATIONS
+- Storybook with MDX per component
+- AI-powered code docgen (Vercel AI SDK or CLI)
+- Local dev banner printed on `pnpm dev`
+- Spell checking with `cspell`
+
+## SUGGESTED ADDITIONS
+- Add `lib/analytics.ts`: unified event tracking wrapper
+  - Supports PostHog or any provider via `setAnalytics()`
+  - Call `trackEvent('event_name', { ...data })` from any module
+- Add `lib/errors.ts`: unified error reporting wrapper
+  - Supports Sentry or custom logging via `setErrorHandler()`
+  - Call `reportError(error, { context })` from any module
+- Add `lib/permissions.ts` for typed role-based access control
+- Add `lib/validation.ts` for shared and composable Zod schemas
+- Add `src/config.ts` to centralize project-wide constants (env-safe)
+- Add `setup.sh` for bootstrapping local dev (node, pnpm, .env, git hooks)

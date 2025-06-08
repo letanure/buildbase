@@ -61,7 +61,7 @@ alwaysApply: true
 
 ## RULES
 - Use pnpm only (no yarn, no npm)
-- Use Biome for lint, format, and typecheck (no eslint or prettier)
+# - Use Biome for lint, format, and typecheck (no eslint or prettier)
 - Commit messages must follow Conventional Commits
 - All components must support dark/light mode via CSS tokens
 - Add tests (unit + E2E) for all shared components and routes
@@ -72,6 +72,9 @@ alwaysApply: true
 - Always update `README.md` when structure, setup, or logic changes
 - All app logic must use `trackEvent()` for analytics
 - All error handling must use `reportError()` instead of `console.error`
+- All global constants must be defined in `src/config.ts`
+- Public keys like PostHog, Sentry must be defined in `appConfig.publicKeys`
+- Features must be toggleable via `appConfig.features`
 
 ## TESTING
 - Unit tests colocated with components

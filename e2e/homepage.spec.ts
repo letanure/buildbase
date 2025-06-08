@@ -27,3 +27,8 @@ test('homepage UI elements are visible', async ({ page }) => {
   await expect(page.getByRole('link', { name: /Examples/ })).toBeVisible();
   await expect(page.getByRole('link', { name: /Go to nextjs\.org/i })).toBeVisible();
 });
+
+test('homepage visual snapshot', async ({ page }) => {
+  await page.goto('/');
+  await expect(page).toHaveScreenshot('homepage.png');
+});

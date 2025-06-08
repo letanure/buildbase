@@ -13,7 +13,7 @@ alwaysApply: true
 ## COMMITS
 - Use semantic commit messages
 - Allowed types: [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test]
-- Keep commit messages short (preferably under 50 characters)
+- Keep commit messages short ( under 100 characters)
 - Enforced via Husky and Commitlint
 
 ## STACK

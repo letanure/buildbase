@@ -1,6 +1,5 @@
 "use client";
 
-import { mergeClassNames } from "@/lib/utils";
 import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
 
@@ -43,10 +42,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		return (
 			<button
 				ref={ref}
-				className={mergeClassNames(
-					buttonVariants({ variant, size, fullWidth }),
-					className,
-				)}
+				type={props.type ?? "button"}
+				className={buttonVariants({
+					variant,
+					size,
+					fullWidth,
+					class: className,
+				})}
 				{...props}
 			/>
 		);

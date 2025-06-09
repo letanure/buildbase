@@ -6,6 +6,7 @@ import { getMessages } from 'next-intl/server';
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { WrapperProvider } from '@/providers/WrapperProvider';
+import { AnalyticsProvider } from "@/providers/AnalyticsProvider";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -44,6 +45,7 @@ export default async function RootLayout({
 				<WrapperProvider locale={locale} messages={messages}>
 					{children}
 				</WrapperProvider>
+				<AnalyticsProvider />
 			</body>
 		</html>
 	);

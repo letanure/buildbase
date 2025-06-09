@@ -1,8 +1,6 @@
-import { Button } from "@/components/ui/Button/Button";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
 import { Demo } from "@/components/Demo/Demo";
 
 export default function Home() {
@@ -20,9 +18,7 @@ export default function Home() {
 				/>
 				<Demo />
 				<ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-					<li>
-						<LanguageSwitcher />
-					</li>
+					
 					<li>
 						{t("title")}
 						<Link href="/about">{t("about")}</Link>
@@ -38,17 +34,6 @@ export default function Home() {
 						Save and see your changes instantly.
 					</li>
 				</ol>
-
-				<div className="flex gap-4 items-center flex-col sm:flex-row">
-					<Button variant="outline">Click me</Button>
-					<Button variant="ghost">Click me</Button>
-					<Button variant="link">Click me</Button>
-				</div>
-				<div className="flex gap-4 items-center flex-col sm:flex-row w-100">
-					<Button variant="outline" fullWidth>
-						Click me
-					</Button>
-				</div>
 
 				<div className="flex gap-4 items-center flex-col sm:flex-row">
 					<a

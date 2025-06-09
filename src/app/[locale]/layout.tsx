@@ -1,7 +1,8 @@
 // src/app/[locale]/layout.tsx
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { hasLocale } from "next-intl";
+import { getMessages } from 'next-intl/server';
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { WrapperProvider } from '@/providers/WrapperProvider';
@@ -34,13 +35,14 @@ export default async function RootLayout({
 	if (!hasLocale(routing.locales, locale)) {
 		notFound();
 	}
+	const messages = await getMessages();
 	return (
 		<html lang={locale}>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<WrapperProvider>
-				<NextIntlClientProvider>{children}</NextIntlClientProvider>
+				<WrapperProvider locale={locale} messages={messages}>
+					{children}
 				</WrapperProvider>
 			</body>
 		</html>

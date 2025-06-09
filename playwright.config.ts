@@ -10,4 +10,5 @@ export default defineConfig({
     headless: true,
     trace: 'on-first-retry',
   },
+  outputDir: 'e2e/playwright-report',
 });

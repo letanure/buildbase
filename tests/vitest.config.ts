@@ -19,7 +19,6 @@ export default defineConfig({
 			reportsDirectory: "./coverage",
 			include: ['src/**/*.{test}.{ts,tsx}'],
 			exclude: [
-				"e2e",
 				"**/tests/**",
 				"**/*.test.{ts,tsx}",
 				"**/__mocks__/**",

@@ -30,5 +30,9 @@ export function DeviceProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useDevice() {
-  return useContext(DeviceContext);
+  const context = useContext(DeviceContext);
+  if (!context) {
+    throw new Error('useDevice must be used within a DeviceProvider');
+  }
+  return context;
 }

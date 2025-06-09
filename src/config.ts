@@ -1,11 +1,23 @@
+export type AppConfig = {
+	defaultLocale: string;
+	locales: Array<{
+		code: string;
+		label: string;
+		enabled: boolean;
+	}>;
+	branding: {
+		siteName: string;
+		description: string;
+	};
+};
+
 export const appConfig = {
 	defaultLocale: "en",
 
-	locales: {
-		en: { label: "English", enabled: true },
-		pt: { label: "Português", enabled: true },
-		es: { label: "Español", enabled: false },
-	},
+	locales: [
+		{ code: "en", label: "English", enabled: true },
+		{ code: "pt", label: "Português", enabled: true },
+	],
 
 	branding: {
 		siteName: "Buildbase",
@@ -14,8 +26,11 @@ export const appConfig = {
 } as const;
 
 // Helpers
-export const enabledLocales = Object.entries(appConfig.locales)
-	.filter(([, value]) => value.enabled)
-	.map(([locale]) => locale);
+export const enabledLocales = appConfig.locales
+	.filter((locale) => locale.enabled)
+	.map((locale) => ({
+		code: locale.code,
+		label: locale.label,
+	}));
 
 export const defaultLocale = appConfig.defaultLocale;

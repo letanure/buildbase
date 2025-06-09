@@ -4,18 +4,21 @@ function shouldLog() {
 
 export function logInfo(...args: unknown[]) {
   if (shouldLog()) {
-    console.info("[INFO]", ...args);
+    const timestamp = new Date().toISOString();
+    console.info("[INFO]", `[${timestamp}]`, ...args);
   }
 }
 
 export function logWarn(...args: unknown[]) {
   if (shouldLog()) {
-    console.warn("[WARN]", ...args);
+    const timestamp = new Date().toISOString();
+    console.warn("[WARN]", `[${timestamp}]`, ...args);
   }
 }
 
 export function logDev(...args: unknown[]) {
   if (shouldLog()) {
-    console.log("[DEBUG]", ...args);
+    const timestamp = new Date().toISOString();
+    console.log("[DEBUG]", `[${timestamp}]`, ...args);
   }
 }

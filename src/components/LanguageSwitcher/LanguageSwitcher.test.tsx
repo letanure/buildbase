@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "@/tests/utils";
 import { describe, it, expect } from "vitest";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { IntlProvider } from "next-intl";
@@ -8,7 +9,7 @@ const messages = { test: "value" };
 
 describe("LanguageSwitcher", () => {
   it("renders all enabled locales as links", () => {
-    render(
+    renderWithProviders(
       <IntlProvider locale="en" messages={messages}>
         <LanguageSwitcher />
       </IntlProvider>
@@ -19,7 +20,7 @@ describe("LanguageSwitcher", () => {
   });
 
   it("marks the current locale as active", () => {
-    render(
+    renderWithProviders(
       <IntlProvider locale="en" messages={messages}>
         <LanguageSwitcher />
       </IntlProvider>

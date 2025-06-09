@@ -3,7 +3,7 @@ import { execSync } from "node:child_process";
 
 const generators = [
   { name: "UI Component", value: "ui new" },
-  
+  { name: "Provider", value: "provider new" },
 ];
 
 async function main() {

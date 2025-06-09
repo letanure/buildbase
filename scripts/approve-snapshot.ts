@@ -1,3 +1,4 @@
+#!/usr/bin/env tsx
 // scripts/approve-snapshot.js
 import fs from 'fs';
 import path from 'path';
@@ -6,7 +7,7 @@ import inquirer from 'inquirer';
 const reportDir = path.resolve('e2e/playwright-report');
 const snapshotDir = path.resolve('e2e');
 
-const folders = fs.readdirSync(reportDir).filter((name) => {
+const folders = fs.readdirSync(reportDir).filter((name: string) => {
   const fullPath = path.join(reportDir, name);
   return fs.statSync(fullPath).isDirectory();
 });
@@ -16,7 +17,7 @@ if (folders.length === 0) {
   process.exit(0);
 }
 
-const choices = folders
+const choices: Array<{ name: string; value: { folder: string; fileName: string; testName: string } }> = folders
   .map((folder) => {
     const match = folder.match(/^(.+)\.e2e\.ts-(.+)-visual-snapshot$/);
     if (!match) return null;
@@ -26,14 +27,14 @@ const choices = folders
       value: { folder, fileName, testName },
     };
   })
-  .filter(Boolean);
+  .filter(Boolean) as Array<{ name: string; value: { folder: string; fileName: string; testName: string } }>;
 
 if (choices.length === 0) {
   console.log("No valid snapshot folders found.");
   process.exit(0);
 }
 
-const { selected } = await inquirer.prompt([
+const { selected }: { selected: { folder: string; fileName: string; testName: string } } = await inquirer.prompt([
   {
     type: 'list',
     name: 'selected',
@@ -52,7 +53,7 @@ console.log(`\nActual: ${actualPath}`);
 console.log(`Diff:   ${diffPath}`);
 console.log(`Will copy to: ${expectedPath}\n`);
 
-const { approve } = await inquirer.prompt([
+const { approve }: { approve: boolean } = await inquirer.prompt([
   {
     type: 'confirm',
     name: 'approve',

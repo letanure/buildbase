@@ -14,7 +14,7 @@
 		"e2e:snapshot:approveEach": "tsx scripts/approve-snapshot.ts",
 		"e2e:headed": "playwright test --headed",
 		"e2e:ui": "playwright test --reporter=html && playwright show-report",
-		"preinstall": "ts-node scripts/preinstall.ts",
+		"preinstall": "ts-node scripts/preinstall.js",
 		"prepare": "husky install",
 		"test": "pnpm test:unit && pnpm test:e2e",
 		"test:unit": "vitest --config tests/vitest.config.ts",

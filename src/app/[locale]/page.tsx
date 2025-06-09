@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/Button/Button";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
 
 export default function Home() {
 	const t = useTranslations("HomePage");
@@ -17,6 +18,9 @@ export default function Home() {
 					priority
 				/>
 				<ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+					<li>
+						<LanguageSwitcher />
+					</li>
 					<li>
 						{t("title")}
 						<Link href="/about">{t("about")}</Link>

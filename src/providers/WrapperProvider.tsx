@@ -3,6 +3,7 @@
 import React from 'react';
 import { DeviceProvider } from './DeviceProvider';
 import { IntlProvider } from './IntlProvider';
+import { ErrorBoundary } from './ErrorBoundary';
 
 type WrapperProviderProps = {
     children: React.ReactNode;
@@ -12,10 +13,12 @@ type WrapperProviderProps = {
 
 export function WrapperProvider({ children, locale, messages }: WrapperProviderProps) {
     return (
-      <IntlProvider locale={locale} messages={messages}>
-        <DeviceProvider>
-          {children}
-        </DeviceProvider>
-      </IntlProvider>
-    );
-  }
+      <ErrorBoundary>
+        <IntlProvider locale={locale} messages={messages}>
+          <DeviceProvider>
+            {children}
+			  </DeviceProvider>
+		  </IntlProvider>
+    </ErrorBoundary>
+  );
+}

@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
+import { Demo } from "@/components/Demo/Demo";
 
 export default function Home() {
 	const t = useTranslations("HomePage");
@@ -17,6 +18,7 @@ export default function Home() {
 					height={38}
 					priority
 				/>
+				<Demo />
 				<ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
 					<li>
 						<LanguageSwitcher />

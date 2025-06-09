@@ -9,6 +9,12 @@ export type AppConfig = {
 		siteName: string;
 		description: string;
 	};
+	analytics: {
+		umami: {
+			enabled: boolean;
+			siteId: string;
+		};
+	};
 };
 
 export const appConfig = {
@@ -22,6 +28,20 @@ export const appConfig = {
 	branding: {
 		siteName: "Buildbase",
 		description: "Reusable boilerplate for full-featured Next.js apps",
+	},
+	analytics: {
+		umami: {
+			enabled: true,
+			siteId: "4a3a3f8c-c03b-42bc-b507-9a25b94ae0c1",
+		},
+		googleAnalytics: {
+			enabled: false,
+			siteId: "G-XXXXXXXXXX",
+		},
+		plausible: {
+			enabled: false,
+			siteId: "buildbase.com",
+		},
 	},
 } as const;
 

@@ -1,8 +1,10 @@
+// src/app/[locale]/layout.tsx
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
+import { WrapperProvider } from '@/providers/WrapperProvider';
 import "../globals.css";
 
 const geistSans = Geist({
@@ -37,7 +39,9 @@ export default async function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
+				<WrapperProvider>
 				<NextIntlClientProvider>{children}</NextIntlClientProvider>
+				</WrapperProvider>
 			</body>
 		</html>
 	);

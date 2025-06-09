@@ -1,0 +1,42 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        # Fetches the source code
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+        # Installs pnpm package manager
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+        # Sets up Node.js with pnpm caching
+
+      - name: Clean install folders
+        run: rm -rf node_modules ~/.pnpm-store
+        # Ensures a clean dependency environment
+
+      - name: Install dependencies
+        run: pnpm install
+        # Installs project dependencies
+      - name: Lint
+        run: pnpm lint
+      - name: Type check
+        run: pnpm tsc --noEmit
+      - name: Run Vitest Unit Tests
+        run: pnpm test:unit

@@ -23,7 +23,6 @@ const languageLinkVariants = cva(
 export const LanguageSwitcher = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
     const pathname = usePathname();
-    console.log(pathname);
     const currentLocale = useLocale();
 
     return (

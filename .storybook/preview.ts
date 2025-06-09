@@ -1,9 +1,26 @@
-import type { Preview } from '@storybook/nextjs-vite'
+import type { Preview } from '@storybook/nextjs-vite';
+import nextIntl from './next-intl';
 import '../src/app/globals.css';
-
+import {enabledLocales, defaultLocale} from '../src/config';
 
 const preview: Preview = {
+  initialGlobals: {
+    locale: defaultLocale,
+    locales: {
+      ...enabledLocales.map((locale) => ({
+        [locale.code]: locale.label,
+      })),
+    },
+  },
   parameters: {
+    nextIntl,
+    nextjs: {
+      appDirectory: true,
+      navigation: {
+        defaultLocale,
+        locales: enabledLocales.map((locale) => locale.code),
+      },
+    },
     controls: {
       matchers: {
        color: /(background|color)$/i,

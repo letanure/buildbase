@@ -2,5 +2,9 @@
 	"HomePage": {
 		"title": "Hello world!",
 		"about": "Go to the about page"
+	},
+	"Demo": {
+		"title": "Demo Component",
+		"trackEvent": "Track event with"
 	}
 }

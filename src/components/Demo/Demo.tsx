@@ -5,6 +5,7 @@ import { trackEvent } from "@/lib/analytics";
 import { useTrack } from "@/hooks/useTrack";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
 import { Button } from "@/components/ui/Button/Button";
+import { useTranslations } from "next-intl";
 
 
 type DemoProps = {
@@ -12,11 +13,12 @@ type DemoProps = {
 };
 export const Demo = React.forwardRef<HTMLUListElement, DemoProps>(
   ({ className }, ref) => {
+    const t = useTranslations("Demo");
     const { isMobile } = useDevice();
     const track = useTrack();
     return (
       <div className={`max-w-md mx-auto mt-8 p-6 rounded-xl border border-gray-200 bg-white dark:bg-zinc-900 shadow-sm ${className || ''}`}>
-        <h2 className="text-xl font-bold mb-2">Demo Component</h2>
+        <h2 className="text-xl font-bold mb-2">{t("title")}</h2>
         <p className="text-sm text-muted-foreground mb-4">Hooks & Actions</p>
         <ul ref={ref} className="space-y-4">
           <li className="flex items-center gap-2">
@@ -30,7 +32,8 @@ export const Demo = React.forwardRef<HTMLUListElement, DemoProps>(
               className="px-3 py-2 rounded bg-primary text-primary-foreground hover:bg-primary/90 transition font-medium"
               onClick={() => trackEvent("demo_button_clicked")}
             >
-              Track event with <span className="font-mono">trackEvent</span>
+              {t("trackEvent")}
+              <span className="font-mono">trackEvent</span>
             </button>
           </li>
           <li>
@@ -38,7 +41,8 @@ export const Demo = React.forwardRef<HTMLUListElement, DemoProps>(
               className="px-3 py-2 rounded bg-secondary text-secondary-foreground hover:bg-secondary/80 transition font-medium"
               onClick={() => track("demo_button_clicked")}
             >
-              Track event with <span className="font-mono">useTrack</span>
+              {t("trackEvent")}
+              <span className="font-mono">useTrack</span>
             </button>
           </li>
           <li>

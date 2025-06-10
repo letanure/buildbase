@@ -118,3 +118,31 @@ The E2E workflow depends on this unit test workflow. E2E tests will only run **i
 1. Go to the **Actions** tab on your GitHub repository.
 2. Click on the **Unit Tests** workflow.
 3. Select a run to see full logs and test results.
+
+
+## Structure
+```
+.                                   # Root of the project
+├── _templates                      # Hygen generators for providers, UI components
+│   └── provider                    # Generator for custom providers
+├── e2e                             # End-to-end tests, reports, snapshots
+├── public                          # Static files served at /
+├── scripts                         # Dev scripts
+├── src                             # Main application code
+│   ├── app                         # Next.js App Router routes
+│   │   ├── [locale]                # Localized routes (e.g. /en, /pt)
+│   │   └── auth                    # Auth-specific pages (e.g. login, register)
+│   ├── components                  # App-scoped components and UI components
+│   ├── hooks                       # Reusable React hooks (e.g. useDevice)
+│   ├── i18n                        # i18n utilities (routing, config)
+│   ├── lib                         # Logic libraries, services, utils
+│   │   ├── analytics               # Analytics wrapper (trackEvent, etc.)
+│   │   └── supabase                # Supabase client, auth/session logic
+│   ├── locales                     # Translation JSONs for next-intl
+│   ├── providers                   # React providers (e.g. ThemeProvider)
+│   ├── stories                     # Storybook demo stories, to be removed
+│   └── tests                       # App-specific test utils (e.g. test-utils.tsx)
+├── styles                          # Tailwind + theme.css (light/dark tokens)
+├── tests                           # Global or root-level test helpers
+└── types                           # Shared TypeScript types/interfaces
+```

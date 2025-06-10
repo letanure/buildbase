@@ -6,6 +6,8 @@ import { useTrack } from "@/hooks/useTrack";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
 import { Button } from "@/components/ui/Button/Button";
 import { useTranslations } from "next-intl";
+import { LogoutButton } from "../LogoutButton/LogoutButton";
+import { Link } from "@/i18n/navigation";
 
 
 type DemoProps = {
@@ -26,6 +28,11 @@ export const Demo = React.forwardRef<HTMLUListElement, DemoProps>(
             <span className="inline-block px-2 py-1 rounded bg-blue-50 dark:bg-zinc-800 text-xs font-semibold">
               {isMobile ? "Mobile" : "Desktop"}
             </span>
+          </li>
+          <li>
+            {/* login page link and logout button */}
+            <Link href="/login">Login</Link>
+            <LogoutButton />
           </li>
           <li>
             <button

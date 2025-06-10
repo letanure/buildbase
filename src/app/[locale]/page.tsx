@@ -1,10 +1,24 @@
+"use client"
+
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Demo } from "@/components/Demo/Demo";
 
+import { createClient } from '@/lib/supabase/client'
+import { useRouter } from 'next/navigation'
+
 export default function Home() {
 	const t = useTranslations("HomePage");
+
+	const router = useRouter()
+  const supabase = createClient()
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    router.refresh()
+  }
+
 	return (
 		<div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
 			<main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -18,6 +32,14 @@ export default function Home() {
 				/>
 				<Demo />
 				<ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+				<li>
+          <button
+            onClick={handleSignOut}
+            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+          >
+            Sign Out
+          </button>
+				</li>
 					
 					<li>
 						{t("title")}

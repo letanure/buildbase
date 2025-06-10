@@ -43,7 +43,7 @@ alwaysApply: true
 - src/styles → tailwind.css, theme.css
 - src/types → shared type definitions
 - src/tests → global test utils (optional)
-- public/locales → JSON i18n files
+- src/locales → JSON i18n files
 - _templates → Hygen generators
 - docs → internal documentation
 

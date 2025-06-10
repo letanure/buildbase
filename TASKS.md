@@ -139,3 +139,38 @@
 ## 🧹 Misc
 - [ ] Zod setup (lib/validation.ts)
 - [ ] lib/errors.ts for reportError()
+
+## Update folder structure to
+
+.                                   # Root of the project
+├── _templates                      # Hygen generators for providers, UI components
+│   └── provider                    # Generator for custom providers
+├── e2e                             # End-to-end tests, reports, snapshots
+├── public                          # Static files served at /
+├── scripts                         # Dev scripts
+├── src                             # Main application code
+│   ├── app                         # Next.js App Router routes
+│   │   ├── [locale]                # Localized routes (e.g. /en, /pt)
+│   │   └── auth                    # Auth-specific pages (e.g. login, register)
+│   ├── components                  # App-scoped components and UI components
+│   ├── config                      # Global constants, public keys, feature flags
+│   ├── constants                   # Static values like routes, roles, timeouts
+│   ├── hooks                       # Reusable React hooks (e.g. useDevice, useLogout)
+│   ├── i18n                        # i18n routing, locale config, helpers
+│   ├── icons                       # Centralized Lucide or custom SVG icons
+│   ├── layouts                     # Shared layout shells (e.g. DashboardLayout)
+│   ├── lib                         # Logic libraries and services
+│   │   ├── analytics               # Analytics wrapper (trackEvent, etc.)
+│   │   ├── supabase                # Supabase client, auth/session logic
+│   │   └── errors                  # Error reporting (e.g. reportError)
+│   ├── locales                     # next-intl translation JSONs
+│   ├── middleware                  # Custom middleware logic (optional)
+│   ├── permissions                 # Role-based access logic
+│   ├── providers                   # React providers (e.g. ThemeProvider, AuthProvider)
+│   ├── tests                       # App-specific test utils (e.g. test-utils.tsx)
+│   ├── utils                       # Pure utility functions, formatters, parsers
+│   ├── validators                  # Zod schemas or reusable form validators
+│   └── features                    # (Optional) Feature-based grouping (e.g. auth, dashboard)
+├── styles                          # Tailwind config, theme.css with tokens
+├── tests                           # Global or root-level test helpers
+└── types                           # Shared TypeScript types/interfaces

@@ -25,6 +25,8 @@ export const appConfig = {
 		{ code: "pt", label: "Português", enabled: true },
 	],
 
+	timeZone: "UTC",
+
 	branding: {
 		siteName: "Buildbase",
 		description: "Reusable boilerplate for full-featured Next.js apps",

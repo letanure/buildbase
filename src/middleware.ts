@@ -23,6 +23,6 @@ export async function middleware(request: NextRequest) {
 export const config = {
 	matcher: [
 		// Only match routes that do NOT start with these paths
-		'/((?!_next/static|_next/image|_next|favicon.ico|api|trpc).*)',
+		'/((?!_next/static|_next/image|_next|favicon.ico|api|trpc|.well-known).*)',
 	],
 };
